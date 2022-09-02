@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import AllCards from './routes/allCards';
 import reportWebVitals from './reportWebVitals';
+import MatchHistory from './routes/MatchHistory';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +13,7 @@ root.render(
   <Routes>
     <Route path="/" element={<App />}>
       <Route path="allCards" element={<AllCards />} />
+      <Route path="matchHistory" element={<MatchHistory />} />
       <Route
           path="*"
           element={
