@@ -51,6 +51,12 @@ export default function GameMatchList() {
   return (
     <>
     {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
+    {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
+    {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
+    {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
+    {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
+    {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
+    {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
       
       
     </>
