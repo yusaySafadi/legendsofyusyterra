@@ -3,12 +3,12 @@ import styled from "styled-components";
 import {DeckEncoder} from "runeterra";
 
 const StyledGameMatchConatiner = styled.div`
-  height: 10%;
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #e2e1e1;
-  width: 50%;
+  width: 75%;
   border: 2px solid black;
   border-radius: 15px;
   background: ${(props) =>
@@ -17,10 +17,11 @@ const StyledGameMatchConatiner = styled.div`
     props.outcome === "loss"
       ? "linear-gradient(90deg, rgba(255,0,65,1) 0%, rgba(0,224,255,1) 100%)"
       : "linear-gradient(90deg, rgba(0,224,255,1) 0%, rgba(255,0,68,1) 100%)"};
-
+  padding: 0.75rem;
   > * {
     border: 1px solid black;
   }
+
 `;
 
 const StyledFractionImage = styled.img`
@@ -58,7 +59,7 @@ export default function GameMatch({ game, data }) {
       <p>{game.info.game_type}</p>
       <div>
         <p>Game Result</p>
-        <h3>{game.info.players[1].game_outcome}</h3>
+        <h1>{game.info.players[1].game_outcome.toUpperCase()}</h1>
       </div>
 
       <div>
