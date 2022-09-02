@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {DeckEncoder} from "runeterra";
 
 const StyledGameMatchConatiner = styled.div`
   height: 10%;
@@ -27,7 +28,14 @@ const StyledFractionImage = styled.img`
   height: 36px;
 `;
 
-export default function GameMatch({ game }) {
+const StyledChampionImageRound = styled.img`
+width: 68px;
+height:102px;
+
+`
+
+export default function GameMatch({ game, data }) {
+  console.log(data);
   const fractionRegex = "_([a-zA-Z0-9.-]*)_";
   let playerFractions = game.info.players[1].factions.map((fraction) =>
     fraction.match(fractionRegex)[1].toLowerCase()
@@ -35,6 +43,16 @@ export default function GameMatch({ game }) {
   let enemyFractions = game.info.players[0].factions.map((fraction) =>
     fraction.match(fractionRegex)[1].toLowerCase()
   );
+  
+  const playerDeck = DeckEncoder.decode(game.info.players[1].deck_code);
+  const enemyDeck = DeckEncoder.decode(game.info.players[0].deck_code);
+ 
+  const playerCardCodes = playerDeck.map(card => card.code);
+  const enemyCardCodes = enemyDeck.map(card => card.code);
+
+  const playerChampions = data.filter(card => playerCardCodes.includes(card.cardCode) && card.rarityRef === "Champion")
+  const enemyChampions = data.filter(card => enemyCardCodes.includes(card.cardCode) && card.rarityRef === "Champion")
+  console.log(playerChampions)
   return (
     <StyledGameMatchConatiner outcome={game.info.players[1].game_outcome}>
       <p>{game.info.game_type}</p>
@@ -53,6 +71,12 @@ export default function GameMatch({ game }) {
           ))}
         </div>
       </div>
+      <div>
+        <h3>Champions</h3>
+        {
+          playerChampions.map(champion=> <StyledChampionImageRound src={champion.assets[0].gameAbsolutePath} />)
+        }
+      </div>
       <h2>VS</h2>
       <div>
         <h3>Regions</h3>
@@ -63,6 +87,12 @@ export default function GameMatch({ game }) {
             ></StyledFractionImage>
           ))}
         </div>
+      </div>
+      <div>
+        <h3>Champions</h3>
+        {
+          enemyChampions.map(champion=> <StyledChampionImageRound src={champion.assets[0].gameAbsolutePath} />)
+        }
       </div>
     </StyledGameMatchConatiner>
   );
