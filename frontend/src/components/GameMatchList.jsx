@@ -1,7 +1,13 @@
 import React from "react";
 import GameMatch from "./GameMatch";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
+const StyledGameMatchList = styled.div`
+display: flex;
+flex-direction: column;
+gap: 15px;
+`
 export default function GameMatchList() {
     const [data, setData] = useState({});
   useEffect(() => {
@@ -49,7 +55,7 @@ export default function GameMatchList() {
     },
   };
   return (
-    <>
+    <StyledGameMatchList>
     {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
     {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
     {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
@@ -59,6 +65,6 @@ export default function GameMatchList() {
     {JSON.stringify(data) !== '{}'? <GameMatch game={game} data={data} /> : <p>loading</p> }
       
       
-    </>
+    </StyledGameMatchList>
   );
 }
