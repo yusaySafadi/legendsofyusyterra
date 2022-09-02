@@ -12,14 +12,14 @@ const StyledGameMatchConatiner = styled.div`
   border: 2px solid black;
   border-radius: 15px;
   background: ${(props) =>
-    props.outcome === "loss" ? "rgb(255,0,65)" : "rgb(0,224,255)"};
+    props.outcome === "loss" ? "#b5002d" : "#00525c"};
   background: ${(props) =>
     props.outcome === "loss"
-      ? "linear-gradient(90deg, rgba(255,0,65,1) 0%, rgba(0,224,255,1) 100%)"
-      : "linear-gradient(90deg, rgba(0,224,255,1) 0%, rgba(255,0,68,1) 100%)"};
+      ? "linear-gradient(90deg, #b5002d 0%, #00525c 100%)"
+      : "linear-gradient(90deg, #00525c 0%, #b5002d 100%)"};
   padding: 0.75rem;
   > * {
-    border: 1px solid black;
+    //border: 1px solid black;
   }
 
 `;
