@@ -7,11 +7,7 @@ export default function MatchHistory() {
     
   return (
     <>
-    
-    <div>MatchHistory</div>
     <GameMatchList/>
-    
-    
     </>
   )
 }
