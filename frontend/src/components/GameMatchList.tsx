@@ -2,6 +2,7 @@ import React from "react";
 import GameMatch from "./GameMatch";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { GameData, IGameMatch } from "../interfaces";
 
 const StyledGameMatchList = styled.div`
 display: flex;
@@ -9,13 +10,13 @@ flex-direction: column;
 gap: 15px;
 `
 export default function GameMatchList() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState<GameData[]>([]);
   useEffect(() => {
     fetch("http://localhost:5000/getData")
       .then((res) => res.json())
       .then((d) => setData(d));
   }, []);
-  const game = {
+  const game: IGameMatch = {
     metadata: {
       data_version: "2",
       match_id: "9b10da6c-851e-4f0b-835e-df2153ba79a6",
@@ -27,7 +28,7 @@ export default function GameMatchList() {
     info: {
       game_mode: "Constructed",
       game_type: "Ranked",
-      game_start_time_utc: "2022-09-02T12:07:04.5935601+00:00",
+      game_start_time_utc: new Date(Date.UTC(2022,9,2,12,7,4,5935601)),//"2022-09-02T12:07:04.5935601+00:00",
       game_version: "live-green-3-14-52",
       players: [
         {
