@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {DeckEncoder} from "runeterra";
-import { GameData, IGameMatch } from "../interfaces";
+import { GameData, IGameMatch, RarityRef } from "../interfaces";
 
 
 
@@ -25,8 +25,8 @@ export default function GameMatch({ game, data }: GameMatchProps) {
   const playerCardCodes = playerDeck.map(card => card.code);
   const enemyCardCodes = enemyDeck.map(card => card.code);
 
-  const playerChampions = data.filter(card => playerCardCodes.includes(card.cardCode) && card.rarityRef === "Champion")
-  const enemyChampions = data.filter(card => enemyCardCodes.includes(card.cardCode) && card.rarityRef === "Champion")
+  const playerChampions = data.filter(card => playerCardCodes.includes(card.cardCode) && card.rarityRef === RarityRef.Champion)
+  const enemyChampions = data.filter(card => enemyCardCodes.includes(card.cardCode) && card.rarityRef === RarityRef.Champion)
   console.log(playerChampions)
   return (
     <StyledGameMatchConatiner outcome={game.info.players[1].game_outcome}>
