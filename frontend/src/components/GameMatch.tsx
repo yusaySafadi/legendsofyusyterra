@@ -1,41 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import {DeckEncoder} from "runeterra";
+import { GameData, IGameMatch } from "../interfaces";
 
-const StyledGameMatchConatiner = styled.div`
-  height: 135px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #e2e1e1;
-  width: 75%;
-  border: 2px solid black;
-  border-radius: 15px;
-  background: ${(props) =>
-    props.outcome === "loss" ? "#b5002d" : "#00525c"};
-  background: ${(props) =>
-    props.outcome === "loss"
-      ? "linear-gradient(90deg, #b5002d 0%, #00525c 100%)"
-      : "linear-gradient(90deg, #00525c 0%, #b5002d 100%)"};
-  padding: 0.75rem;
-  > * {
-    //border: 1px solid black;
-  }
 
-`;
 
-const StyledFractionImage = styled.img`
-  width: 36px;
-  height: 36px;
-`;
-
-const StyledChampionImageRound = styled.img`
-width: 68px;
-height:102px;
-
-`
-
-export default function GameMatch({ game, data }) {
+type GameMatchProps={
+  game: IGameMatch,
+  data: GameData[]
+}
+export default function GameMatch({ game, data }: GameMatchProps) {
   console.log(data);
   const fractionRegex = "_([a-zA-Z0-9.-]*)_";
   let playerFractions = game.info.players[1].factions.map((fraction) =>
@@ -98,3 +72,40 @@ export default function GameMatch({ game, data }) {
     </StyledGameMatchConatiner>
   );
 }
+interface StyledGameMatchContainerProps{
+  readonly outcome: String;
+}
+
+
+
+const StyledFractionImage = styled.img`
+  width: 36px;
+  height: 36px;
+`;
+
+const StyledChampionImageRound = styled.img`
+width: 68px;
+height:102px;
+`
+
+const StyledGameMatchConatiner = styled.div<StyledGameMatchContainerProps>`
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e2e1e1;
+  width: 75%;
+  border: 2px solid black;
+  border-radius: 15px;
+  background: ${(props) =>
+    props.outcome === "loss" ? "#b5002d" : "#00525c"};
+  background: ${(props) =>
+    props.outcome === "loss"
+      ? "linear-gradient(90deg, #b5002d 0%, #00525c 100%)"
+      : "linear-gradient(90deg, #00525c 0%, #b5002d 100%)"};
+  padding: 0.75rem;
+  > * {
+    //border: 1px solid black;
+  }
+
+`;
