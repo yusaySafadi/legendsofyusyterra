@@ -9,8 +9,8 @@ export default function MatchHistory() {
     <>
     
     <div>MatchHistory</div>
-    <GameMatchList>
-    </GameMatchList>
+    <GameMatchList/>
+    
     
     </>
   )

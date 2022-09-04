@@ -1,9 +1,11 @@
+import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {Outlet}from "react-router-dom"
+import { GameData } from '../interfaces';
 
 export default function AllCards(){
-    const [data, setData] = useState({});
+    const [data, setData] = useState<GameData[]>([]);
   useEffect(()=>{
     fetch("http://localhost:5000/getData").then((res) => res.json()).then((d)=> setData(d));
   },[])
